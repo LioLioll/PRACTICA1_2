@@ -8,20 +8,20 @@ void monedas(const std::vector<int>& m, int d, std::vector<int>& s) {
     int n = m.size();
     int inf_val = std::numeric_limits<int>::max();
     
-    // Matriz T de tamaño n x (d + 1) inicializada con -1 (representando None)
+    
     std::vector<std::vector<int>> T(n, std::vector<int>(d + 1, -1));
     
-    // Caso base
+    
     T[0][0] = 0;
     
-    // Cálculo de la primera fila
+
     for (int j = 1; j <= d; ++j) {
         if (j >= m[0] && T[0][j - m[0]] != -1) {
             T[0][j] = 1 + T[0][j - m[0]];
         }
     }
     
-    // Cálculo del resto de filas
+    
     for (int i = 1; i < n; ++i) {
         T[i][0] = 0;
         for (int j = 1; j <= d; ++j) {
@@ -35,7 +35,7 @@ void monedas(const std::vector<int>& m, int d, std::vector<int>& s) {
         }
     }
     
-    // Recuperar la solución
+    
     s.assign(n, 0);
     int i = n - 1;
     int j = d;
