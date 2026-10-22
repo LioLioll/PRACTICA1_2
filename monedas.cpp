@@ -4,10 +4,10 @@
 
 int mochila(const std::vector<int>& p, const std::vector<int>& b, int m, std::vector<int>& s) {
     int n = p.size();
-    // T[i][w] almacena el beneficio máximo con los primeros i elementos y capacidad w
-    std::vector<std::vector<int>> T(n + 1, std::vector<int>(m + 1, 0));
     
-    // Construcción de la tabla
+    std::vector<std::vector<int>> T(n + 1, std::vector<int>(m + 1, 0));
+
+    
     for (int i = 1; i <= n; ++i) {
         for (int w = 1; w <= m; ++w) {
             if (p[i - 1] <= w) {
@@ -18,7 +18,7 @@ int mochila(const std::vector<int>& p, const std::vector<int>& b, int m, std::ve
         }
     }
     
-    // Recuperar la solución (vector s indicando 1 si se eligió, 0 si no)
+    
     s.assign(n, 0);
     int temp_w = m;
     for (int i = n; i > 0; --i) {
@@ -30,6 +30,6 @@ int mochila(const std::vector<int>& p, const std::vector<int>& b, int m, std::ve
         }
     }
     
-    // Retorna el beneficio máximo
+    
     return T[n][m];
 }
